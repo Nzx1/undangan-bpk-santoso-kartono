@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Undangan untuk Bpk Santoso Kartono dan keluarga</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Great+Vibes&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-cream: #e9eedc;
+      --card-sage: #d8e1c5;
+      --maroon: #7c1212;
+      --maroon-dark: #570c0c;
+      --text-dark: #161813;
+      --text-muted: #495240;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      background-color: var(--bg-cream);
+      color: var(--text-dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Kelopak Teratai Jatuh */
+    #petals-container {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 40;
+      overflow: hidden;
+    }
+
+    .petal {
+      position: absolute;
+      top: -36px;
+      width: 16px;
+      height: 24px;
+      background: radial-gradient(circle at 30% 30%, #ffd6e7, #f29ec4 70%, #d81b60);
+      border-radius: 50% 0 50% 50%;
+      opacity: 0.65;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-10vh) rotate(0deg) translateX(0);
+        opacity: 0;
+      }
+      15% { opacity: 0.7; }
+      85% { opacity: 0.6; }
+      100% {
+        transform: translateY(110vh) rotate(360deg) translateX(35px);
+        opacity: 0;
+      }
+    }
+
+    /* Halaman Awal Khusus Undangan Bpk Santoso Kartono dan keluarga */
+    #welcome-screen {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: radial-gradient(circle at top, #f4f7ec 0%, #e4ebd4 65%, #d6e0c2 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      transition: transform 0.95s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease;
+    }
+
+    #welcome-screen.opened {
+      transform: translateY(-100%);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .welcome-card {
+      width: 100%;
+      max-width: 450px;
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(8px);
+      border: 1.5px solid rgba(124, 18, 18, 0.25);
+      border-radius: 22px;
+      padding: 36px 26px;
+      text-align: center;
+      box-shadow: 0 24px 60px rgba(34, 42, 26, 0.18);
+      animation: cardPop 0.8s ease out;
+    }
+
+    @keyframes cardPop {
+      from {
+        opacity: 0;
+        transform: scale(0.95) translateY(14px);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    .welcome-badge {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--maroon);
+      background: rgba(124, 18, 18, 0.08);
+      display: inline-block;
+      padding: 5px 14px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+
+    .welcome-sub {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .welcome-guest-name {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.45rem, 5.2vw, 1.95rem);
+      font-weight: 700;
+      color: var(--maroon);
+      line-height: 1.25;
+      margin-bottom: 12px;
+    }
+
+    .welcome-event-script {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(2rem, 7vw, 2.65rem);
+      color: var(--text-dark);
+      line-height: 1.1;
+      margin: 6px 0 10px;
+    }
+
+    .welcome-event-desc {
+      font-size: 1.05rem;
+      color: var(--text-dark);
+      margin-bottom: 24px;
+    }
+
+    .btn-open-invitation {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: linear-gradient(135deg, var(--maroon), var(--maroon-dark));
+      color: #fff;
+      border: none;
+      padding: 13px 32px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      border-radius: 999px;
+      cursor: pointer;
+      box-shadow: 0 12px 26px rgba(124, 18, 18, 0.34);
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .btn-open-invitation:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 16px 32px rgba(124, 18, 18, 0.44);
+    }
+
+    /* Konten Utama: Page 1 dst */
+    main {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 32px 16px 96px;
+    }
+
+    .page-card {
+      background: var(--card-sage);
+      border-radius: 16px;
+      padding: 14px;
+      margin-bottom: 24px;
+      box-shadow: 0 14px 36px rgba(34, 42, 26, 0.12);
+      border: 1px solid rgba(124, 18, 18, 0.14);
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
+    }
+
+    .page-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .page-img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    .page-fallback {
+      display: none;
+      padding: 28px 18px;
+      text-align: center;
+      background: #f4f7ec;
+      border-radius: 10px;
+    }
+
+    .page-img.broken {
+      display: none;
+    }
+
+    .page-img.broken + .page-fallback {
+      display: block;
+    }
+
+    /* Kontrol Mengambang */
+    .floating-controls {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 90;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .float-btn {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--maroon);
+      color: #fff;
+      border: 2px solid #f4f7ec;
+      padding: 10px 15px;
+      border-radius: 50px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .float-btn:hover {
+      transform: translateY(-2px);
+      background: var(--maroon-dark);
+    }
+  </style>
+</head>
+<body>
+
+  <div id="petals-container"></div>
+
+  <!-- Opsional: letakkan file musik-buddhis.mp3 di folder yang sama dengan index.html -->
+  <audio id="buddhistMusic" loop preload="auto">
+    <source src="musik-buddhis.mp3" type="audio/mpeg" />
+  </audio>
+
+  <!-- Halaman Awal -->
+  <section id="welcome-screen">
+    <div class="welcome-card">
+      <div class="welcome-badge">Undangan Digital</div>
+      <div class="welcome-sub">Kepada Yth.</div>
+      <h1 class="welcome-guest-name">Bpk Santoso Kartono<br>dan keluarga</h1>
+      <div class="welcome-event-script">Peresmian &amp; Perayaan Syukur</div>
+      <p class="welcome-event-desc">
+        HUT ke-5 Rumah Werda De Liang Village<br>
+        Peresmian Candi Prabuta Ratna &amp; Pratima Avalokitesvara Bodhisattva
+      </p>
+      <button class="btn-open-invitation" onclick="openInvitation()">Buka Undangan</button>
+    </div>
+  </section>
+
+  <div class="floating-controls">
+    <button class="float-btn" id="audioToggleBtn" onclick="toggleBuddhistAudio()">🔔 Musik / Genta: Aktif</button>
+    <button class="float-btn" onclick="reopenWelcome()">Halaman Awal</button>
+  </div>
+
+  <!-- Isi Undangan: Page-1 dst -->
+  <main>
+    <article class="page-card">
+      <img
+        class="page-img"
+        src="page-1.png"
+        alt="Page 1 - Undangan Bpk Santoso Kartono dan keluarga"
+        onerror="this.classList.add('broken')"
+      />
+      <div class="page-fallback">
+        <strong>Page 1</strong><br>
+        UNDANGAN — Kepada Yth. Bpk Santoso Kartono dan keluarga
+      </div>
+    </article>
+
+    <article class="page-card">
+      <img
+        class="page-img"
+        src="page-2.png"
+        alt="Page 2 - Isi Undangan"
+        onerror="this.classList.add('broken')"
+      />
+      <div class="page-fallback">
+        <strong>Page 2</strong><br>
+        Sabtu, 28 November 2026 &bull; Pukul 09.00 WIB - selesai &bull; Rumah Werda De Liang Village, Leuwiliang, Kab. Bogor
+      </div>
+    </article>
+
+    <article class="page-card">
+      <img
+        class="page-img"
+        src="page-3.png"
+        alt="Page 3 - Candi Prabuta Ratna & Pratima Avalokitesvara Bodhisattva"
+        onerror="this.classList.add('broken')"
+      />
+      <div class="page-fallback">
+        <strong>Page 3</strong><br>
+        Peresmian Candi Prabuta Ratna &amp; Pratima Avalokitesvara Bodhisattva
+      </div>
+    </article>
+
+    <article class="page-card">
+      <img
+        class="page-img"
+        src="page-4.png"
+        alt="Page 4 - Bakti Sosial 10.000 Paket Sembako"
+        onerror="this.classList.add('broken')"
+      />
+      <div class="page-fallback">
+        <strong>Page 4</strong><br>
+        Bakti Sosial 10.000 Paket Sembako &bull; Mulai Distribusi: Minggu, 29 November 2026
+      </div>
+    </article>
+  </main>
+
+  <script>
+    let soundEnabled = true;
+
+    function playSingingBowl() {
+      if (!soundEnabled) return;
+      try {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        const ctx = new AudioCtx();
+        const now = ctx.currentTime;
+        const harmonics = [432, 864, 1296];
+        harmonics.forEach((freq, i) => {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(freq, now);
+          gain.gain.setValueAtTime(0.11 / (i + 1), now);
+          gain.gain.exponentialRampToValueAtTime(0.0001, now + 4.2);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(now);
+          osc.stop(now + 4.3);
+        });
+      } catch (e) {}
+    }
+
+    function startBackgroundMusicIfAvailable() {
+      if (!soundEnabled) return;
+      const audio = document.getElementById('buddhistMusic');
+      if (!audio) return;
+      audio.volume = 0.45;
+      audio.play().catch(() => {});
+    }
+
+    function openInvitation() {
+      document.getElementById('welcome-screen').classList.add('opened');
+      window.scrollTo({ top: 0, behavior: 'instant' });
+      playSingingBowl();
+      startBackgroundMusicIfAvailable();
+      revealPages();
+    }
+
+    function reopenWelcome() {
+      document.getElementById('welcome-screen').classList.remove('opened');
+    }
+
+    function toggleBuddhistAudio() {
+      const audio = document.getElementById('buddhistMusic');
+      const btn = document.getElementById('audioToggleBtn');
+      soundEnabled = !soundEnabled;
+
+      if (soundEnabled) {
+        btn.textContent = '🔔 Musik / Genta: Aktif';
+        playSingingBowl();
+        if (audio) audio.play().catch(() => {});
+      } else {
+        btn.textContent = '🔇 Musik / Genta: Mati';
+        if (audio) audio.pause();
+      }
+    }
+
+    function revealPages() {
+      const cards = document.querySelectorAll('.page-card');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.08 });
+      cards.forEach(card => observer.observe(card));
+    }
+
+    const petalsContainer = document.getElementById('petals-container');
+    for (let i = 0; i < 14; i++) {
+      const petal = document.createElement('div');
+      petal.className = 'petal';
+      petal.style.left = Math.random() * 100 + 'vw';
+      petal.style.animationDuration = (8 + Math.random() * 6) + 's';
+      petal.style.animationDelay = (Math.random() * 5) + 's';
+      petalsContainer.appendChild(petal);
+    }
+
+    window.addEventListener('DOMContentLoaded', revealPages);
+  </script>
+</body>
+</html>
